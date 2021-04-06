@@ -30,14 +30,9 @@ class Post(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
-
-class Media(Base):
-    __tablename__ = 'media'
-    id = Column(Integer, primary_key=True)
     type_media = Column(Enum('photo', 'video'))
     url = Column(String(140), nullable=False)
     post_id = Column(Integer, ForeignKey('post.id'))
-    post = relationship(Post)
 
 class Comment(Base):
     __tablename__ = 'comment'
